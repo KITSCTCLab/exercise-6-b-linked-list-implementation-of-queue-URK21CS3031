@@ -1,41 +1,40 @@
 class Node:
-  def _init_(self, data):
+  def __init__(self, data):
     self.data = data
     self.next = None
 
 
 class Queue:
-  def _init_(self):
+  def __init__(self):
     self.head = None
     self.last = None
 
   def enqueue(self, data) -> None:
     # Write your code here
-    if self.last is None:
-      self.head = Node(data)
-      self.last = self.head
+    temp = Node(data)
+    if self.head == None:
+      self.head = temp
+      self.last = temp
+      temp.next = None
     else:
-      self.last.next = Node(data)
-      self.last = self.last.next
+      self.last.next = temp
+      temp.next = None
+      self.last = temp
 
   def dequeue(self) -> None:
     # Write your code here
-    if self.head is None:
-      return None
+    if self.head == None:
+      pass
     else:
-      val_returned = self.head.data
       self.head = self.head.next
 
   def status(self) -> None:
     # Write your code here
-    current = self.head
-    status_of_queue = []
-    while (current):
-      status_of_queue.append(current.data)
-      current = current.next
-    for element in status_of_queue:
-      print(element, end="=>")
-    print(None)
+    temp = self.head
+    while temp!= None:
+      print(temp.data, "=>", sep="", end = "")
+      temp = temp.next
+    print("None")
 
 
 # Do not change the following code
